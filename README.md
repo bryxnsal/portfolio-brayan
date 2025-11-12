@@ -172,11 +172,10 @@ docker run -p 5173:5173 -v $(pwd):/app portfolio-dev
 
 ### Archivos de Docker incluidos
 
-- `Dockerfile`: Multi-stage build para producción
+- `Dockerfile`: Multi-stage build para producción (incluye configuración de nginx integrada)
 - `docker-compose.yml`: Orquestación básica de contenedores
 - `docker-compose.prod.yml`: Configuración avanzada con healthchecks y límites de recursos
 - `.dockerignore`: Archivos excluidos del build
-- `nginx.conf`: Configuración de nginx para SPA
 - `deploy.sh` / `deploy.ps1`: Scripts de despliegue automatizado
 
 ## 📄 Licencia
