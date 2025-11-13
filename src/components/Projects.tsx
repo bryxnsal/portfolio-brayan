@@ -60,7 +60,7 @@ export function Projects() {
 							className="overflow-hidden hover:shadow-xl transition-shadow"
 						>
 							<div className="aspect-video bg-slate-200/15 dark:bg-slate-700/15 flex items-center justify-center">
-								<span className="text-slate-500">Project Image</span>
+								<span className="text-slate-500 select-none">Project Image</span>
 							</div>
 							<CardHeader>
 								<CardTitle className="text-xl font-nav-semibold">{project.title}</CardTitle>
@@ -108,7 +108,7 @@ export function Projects() {
 					{otherProjects.map((project, index) => (
 						<Card key={index} className="hover:shadow-lg transition-shadow">
 							<div className="aspect-video bg-slate-200/15 dark:bg-slate-700/15 flex items-center justify-center">
-								<span className="text-slate-500 text-sm">Project Image</span>
+								<span className="text-slate-500 select-none">Project Image</span>
 							</div>
 							<CardHeader>
 								<CardTitle className="text-lg font-nav-semibold">{project.title}</CardTitle>
@@ -118,7 +118,7 @@ export function Projects() {
 							</CardHeader>
 							<CardContent>
 								<div className="font-text-regular flex flex-wrap gap-1 mb-3">
-									{project.technologies.slice(0, 3).map((tech) => (
+									{project.technologies.map((tech) => (
 										<Badge key={tech} variant="outline" className="text-xs">
 											{tech}
 										</Badge>
@@ -131,7 +131,7 @@ export function Projects() {
 										className="flex-1 text-xs cursor-pointer font-nav-medium"
 									>
 										<ExternalLink className="w-3 h-3 mr-1" />
-										Demo
+										Ver Proyecto
 									</Button>
 									<Button
 										size="sm"
@@ -139,7 +139,7 @@ export function Projects() {
 										className="flex-1 text-xs cursor-pointer font-nav-medium"
 									>
 										<GithubLogoIcon className="w-3 h-3 mr-1" />
-										Code
+										Código
 									</Button>
 								</div>
 							</CardContent>
