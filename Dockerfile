@@ -29,6 +29,10 @@ RUN echo 'server { \
     root /usr/share/nginx/html; \
     index index.html; \
     \
+    # Include MIME types \
+    include /etc/nginx/mime.types; \
+    default_type application/octet-stream; \
+    \
     # Enable gzip compression \
     gzip on; \
     gzip_vary on; \
@@ -46,7 +50,6 @@ RUN echo 'server { \
     add_header X-Frame-Options "SAMEORIGIN" always; \
     add_header X-XSS-Protection "1; mode=block" always; \
     add_header X-Content-Type-Options "nosniff" always; \
-    add_header X-Content-Type-Options "nosniff" always; \
     add_header Referrer-Policy "no-referrer-when-downgrade" always; \
     add_header Content-Security-Policy "default-src '\''self'\'' http: https: data: blob: '\''unsafe-inline'\''" always; \
     \
@@ -55,8 +58,15 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
     \
+    # JavaScript files - ensure correct MIME type \
+    location ~* \.js$ { \
+        add_header Content-Type application/javascript; \
+        expires 1y; \
+        add_header Cache-Control "public, immutable"; \
+    } \
+    \
     # Cache static assets with optimal settings \
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ { \
+    location ~* \.(css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ { \
         expires 1y; \
         add_header Cache-Control "public, immutable"; \
         add_header X-Content-Type-Options "nosniff"; \

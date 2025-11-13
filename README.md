@@ -293,3 +293,16 @@ npm run preview
 # Analizar bundle (nuevo)
 npm run analyze
 ```
+
+### Nginx Optimization (`Dockerfile`)
+- **MIME Types**: Configuración correcta para archivos JavaScript
+- **Cache headers optimizados**: Assets con cache largo, HTML con revalidación
+- **Gzip compression**: Mejor compresión
+- **Security headers**: Optimizados para rendimiento
+
+#### Verificar MIME Types
+```bash
+# Verificar que los archivos JS tienen el MIME type correcto
+curl -I https://tu-dominio.com/assets/index-XXXXXX.js
+# Debería mostrar: Content-Type: application/javascript
+```
