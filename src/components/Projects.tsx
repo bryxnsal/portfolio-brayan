@@ -1,7 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink } from "lucide-react"
+import { GithubLogoIcon } from "@phosphor-icons/react"
 
 const projects = [
 	{
@@ -88,7 +89,7 @@ export function Projects() {
 										size="sm"
 										className="flex-1 cursor-pointer font-nav-medium"
 									>
-										<Github className="w-4 h-4 mr-2" />
+										<GithubLogoIcon className="w-4 h-4 mr-2" />
 										Código
 									</Button>
 								</div>
@@ -137,7 +138,7 @@ export function Projects() {
 										variant="outline"
 										className="flex-1 text-xs cursor-pointer font-nav-medium"
 									>
-										<Github className="w-3 h-3 mr-1" />
+										<GithubLogoIcon className="w-3 h-3 mr-1" />
 										Code
 									</Button>
 								</div>

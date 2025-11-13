@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
+import { GithubLogoIcon, LinkedinLogoIcon, InstagramLogoIcon, XLogoIcon } from "@phosphor-icons/react"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ export function Contact() {
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="font-text-medium">Email</p>
+                    <p className="font-nav-regular">Email</p>
                     <p className="font-text-regular text-sm text-slate-600 dark:text-slate-400">
                       <a href="mailto:salazar.br04@gmail.com" className="hover:text-primary transition-colors font-text-regular">
                         salazar.br04@gmail.com
@@ -59,7 +60,7 @@ export function Contact() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="font-text-medium">Teléfono</p>
+                    <p className="font-nav-regular">Teléfono</p>
                     <p className="font-text-regular text-sm text-slate-600 dark:text-slate-400">
                       <a href="tel:+51904196955" className="hover:text-primary transition-colors">
                         +51 904 196 955
@@ -70,7 +71,7 @@ export function Contact() {
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="font-text-medium">Ubicación</p>
+                    <p className="font-nav-regular">Ubicación</p>
                     <p className="font-text-regular text-sm text-slate-600 dark:text-slate-400">Lima, Perú</p>
                   </div>
                 </div>
@@ -79,23 +80,23 @@ export function Contact() {
                   <p className="font-nav-medium mb-4">Sígueme en redes sociales</p>
                   <div className="flex gap-4">
                     <Button variant="outline" size="icon" asChild className="cursor-pointer select-none">
-                      <a href="https://github.com/bryxnsal" target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4" />
+                      <a href="https://github.com/bryxnsal" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de GitHub de Brayan Salazar">
+                        <GithubLogoIcon className="w-4 h-4" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild className="cursor-pointer select-none">
-                      <a href="https://linkedin.com/in/brayan-salazar-salazar/" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="w-4 h-4" />
+                      <a href="https://linkedin.com/in/brayan-salazar-salazar/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn de Brayan Salazar">
+                        <LinkedinLogoIcon className="w-4 h-4" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild className="cursor-pointer select-none">
-                      <a href="https://twitter.com/bryxn_alv" target="_blank" rel="noopener noreferrer">
-                        <Twitter className="w-4 h-4" />
+                      <a href="https://x.com/bryxn_alv" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de X de Brayan Salazar">
+                        <XLogoIcon className="w-4 h-4" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild className="cursor-pointer select-none">
-                      <a href="https://instagram.com/bryxn.py" target="_blank" rel="noopener noreferrer">
-                        <Instagram className="w-4 h-4" />
+                      <a href="https://instagram.com/bryxn.py" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de Instagram de Brayan Salazar">
+                        <InstagramLogoIcon className="w-4 h-4" />
                       </a>
                     </Button>
                   </div>
@@ -115,7 +116,7 @@ export function Contact() {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <Label htmlFor="name" className="mb-2 font-text-medium">Nombre</Label>
+                    <Label htmlFor="name" className="mb-2 font-nav-regular">Nombre</Label>
                     <Input
                       id="name"
                       name="name"
@@ -127,7 +128,7 @@ export function Contact() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email" className="mb-2 font-text-medium">Email</Label>
+                    <Label htmlFor="email" className="mb-2 font-nav-regular">Email</Label>
                     <Input
                       id="email"
                       name="email"
@@ -139,7 +140,7 @@ export function Contact() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="message" className="mb-2 font-text-medium">Mensaje</Label>
+                    <Label htmlFor="message" className="mb-2 font-nav-regular">Mensaje</Label>
                     <Textarea
                       id="message"
                       name="message"

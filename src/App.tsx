@@ -1,10 +1,13 @@
 import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
 import { Skills } from "@/components/Skills"
-import { Projects } from "@/components/Projects"
-import { Contact } from "@/components/Contact"
-import { Footer } from "@/components/Footer"
-import { ScrollToTop } from "@/components/ScrollToTop"
+import { lazy, Suspense } from "react"
+
+// Lazy load components that are not immediately visible
+const Projects = lazy(() => import("@/components/Projects").then(module => ({ default: module.Projects })))
+const Contact = lazy(() => import("@/components/Contact").then(module => ({ default: module.Contact })))
+const Footer = lazy(() => import("@/components/Footer").then(module => ({ default: module.Footer })))
+const ScrollToTop = lazy(() => import("@/components/ScrollToTop").then(module => ({ default: module.ScrollToTop })))
 
 function App() {
   return (
@@ -13,11 +16,19 @@ function App() {
       <main>
         <Hero />
         <Skills />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<div className="py-20 text-center">Cargando...</div>}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<div className="py-20 text-center">Cargando...</div>}>
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      <ScrollToTop />
+      <Suspense fallback={<div className="py-8 bg-slate-900 text-center text-white">Cargando...</div>}>
+        <Footer />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ScrollToTop />
+      </Suspense>
     </div>
   )
 }

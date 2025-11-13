@@ -32,6 +32,7 @@ export function ScrollToTop() {
         isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'
       }`}
       size="icon"
+      aria-label="Volver al inicio de la página"
     >
       <ChevronUp className="w-6 h-6 transition-transform duration-200" />
     </Button>

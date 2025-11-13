@@ -69,6 +69,7 @@ export function Navbar() {
                 isMobileMenuOpen ? 'rotate-90' : 'rotate-0'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>

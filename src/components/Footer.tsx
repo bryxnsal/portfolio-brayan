@@ -1,4 +1,5 @@
-import { Github, Linkedin, Twitter, Heart, Instagram } from "lucide-react"
+import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon, InstagramLogoIcon } from "@phosphor-icons/react";
+import { Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { scrollToSection } from "@/lib/utils"
 
@@ -16,23 +17,23 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" asChild className="text-slate-400 hover:text-white cursor-pointer select-none">
-                <a href="https://github.com/bryxnsal" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-4 h-4" />
+                <a href="https://github.com/bryxnsal" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de GitHub de Brayan Salazar">
+                  <GithubLogoIcon className="w-4 h-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="text-slate-400 hover:text-white cursor-pointer select-none">
-                <a href="https://linkedin.com/in/brayan-salazar-salazar/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="w-4 h-4" />
+                <a href="https://linkedin.com/in/brayan-salazar-salazar/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn de Brayan Salazar">
+                  <LinkedinLogoIcon className="w-4 h-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="text-slate-400 hover:text-white cursor-pointer select-none">
-                <a href="https://twitter.com/bryxn_alv" target="_blank" rel="noopener noreferrer">
-                  <Twitter className="w-4 h-4" />
+                <a href="https://x.com/bryxn_alv" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de X de Brayan Salazar">
+                  <XLogoIcon className="w-4 h-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="text-slate-400 hover:text-white cursor-pointer select-none">
-                <a href="https://instagram.com/bryxn.py" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="w-4 h-4" />
+                <a href="https://instagram.com/bryxn.py" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de Instagram de Brayan Salazar">
+                  <InstagramLogoIcon className="w-4 h-4" />
                 </a>
               </Button>
             </div>
