@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
 import { GithubLogoIcon } from "@phosphor-icons/react"
+import { useLanguage } from "@/hooks/use-language"
 
 const projects = [
 	{
-		title: "Telegram Bot",
-		description:
-			"Bot de Telegram inteligente con integración de proxies para consumir APIs externas. Implementa webhooks para procesamiento en tiempo real de mensajes y comandos.",
+		titleKey: "projects.telegram.title",
+		descriptionKey: "projects.telegram.desc",
 		image: "/api/placeholder/400/250",
 		technologies: ["Python", "Telegram API", "Proxies", "Webhooks", "APIs Externas"],
 		liveUrl: "#",
@@ -16,9 +16,8 @@ const projects = [
 		featured: true,
 	},
 	{
-		title: "Sistema de Ventas Interno",
-		description:
-			"Sistema completo de gestión de ventas desarrollado con .NET Framework. Incluye interfaz de usuario moderna, base de datos SQL Server y ORM para manejo eficiente de datos.",
+		titleKey: "projects.sales.title",
+		descriptionKey: "projects.sales.desc",
 		image: "/api/placeholder/400/250",
 		technologies: [".NET Framework 4.7.2", "SQL Server", "WinForms", "Entity Framework"],
 		liveUrl: "#",
@@ -26,9 +25,8 @@ const projects = [
 		featured: true,
 	},
 	{
-		title: "Portfolio Personal",
-		description:
-			"Portafolio personal desarrollado con tecnologías modernas de frontend. Incluye diseño responsivo, optimización SEO y modo oscuro.",
+		titleKey: "projects.portfolio.title",
+		descriptionKey: "projects.portfolio.desc",
 		image: "/api/placeholder/400/250",
 		technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui"],
 		liveUrl: "#",
@@ -38,6 +36,7 @@ const projects = [
 ]
 
 export function Projects() {
+	const { t } = useLanguage()
 	const featuredProjects = projects.filter((project) => project.featured)
 	const otherProjects = projects.filter((project) => !project.featured)
 
@@ -46,10 +45,10 @@ export function Projects() {
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="font-display-bold">Proyectos Destacados</span>
+						<span className="font-display-bold">{t("projects.title")}</span>
 					</h2>
 					<p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-text-regular">
-						Una selección de mis trabajos más recientes y desafiantes
+						{t("projects.subtitle")}
 					</p>
 				</div>
 
@@ -63,9 +62,9 @@ export function Projects() {
 								<span className="text-slate-500 select-none">Project Image</span>
 							</div>
 							<CardHeader>
-								<CardTitle className="text-xl font-nav-semibold">{project.title}</CardTitle>
+								<CardTitle className="text-xl font-nav-semibold">{t(project.titleKey)}</CardTitle>
 								<CardDescription className="text-base font-text-regular">
-									{project.description}
+									{t(project.descriptionKey)}
 								</CardDescription>
 							</CardHeader>
 							<CardContent>
@@ -82,7 +81,7 @@ export function Projects() {
 										className="flex-1 cursor-pointer font-nav-medium"
 									>
 										<ExternalLink className="w-4 h-4 mr-2" />
-										Ver proyecto
+										{t("projects.view")}
 									</Button>
 									<Button
 										variant="outline"
@@ -90,7 +89,7 @@ export function Projects() {
 										className="flex-1 cursor-pointer font-nav-medium"
 									>
 										<GithubLogoIcon className="w-4 h-4 mr-2" />
-										Código
+										{t("projects.code")}
 									</Button>
 								</div>
 							</CardContent>
@@ -100,7 +99,7 @@ export function Projects() {
 
 				<div className="text-center mb-12">
 					<h3 className="text-2xl font-bold mb-4 font-nav-semibold">
-						Otros Proyectos
+						{t("projects.others")}
 					</h3>
 				</div>
 
@@ -111,9 +110,9 @@ export function Projects() {
 								<span className="text-slate-500 select-none">Project Image</span>
 							</div>
 							<CardHeader>
-								<CardTitle className="text-lg font-nav-semibold">{project.title}</CardTitle>
+								<CardTitle className="text-lg font-nav-semibold">{t(project.titleKey)}</CardTitle>
 								<CardDescription className="text-sm font-text-regular">
-									{project.description}
+									{t(project.descriptionKey)}
 								</CardDescription>
 							</CardHeader>
 							<CardContent>
@@ -131,7 +130,7 @@ export function Projects() {
 										className="flex-1 text-xs cursor-pointer font-nav-medium"
 									>
 										<ExternalLink className="w-3 h-3 mr-1" />
-										Ver Proyecto
+										{t("projects.view")}
 									</Button>
 									<Button
 										size="sm"
@@ -139,7 +138,7 @@ export function Projects() {
 										className="flex-1 text-xs cursor-pointer font-nav-medium"
 									>
 										<GithubLogoIcon className="w-3 h-3 mr-1" />
-										Código
+										{t("projects.code")}
 									</Button>
 								</div>
 							</CardContent>

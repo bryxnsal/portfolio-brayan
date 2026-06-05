@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronUp } from "lucide-react"
+import { useLanguage } from "@/hooks/use-language"
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -32,7 +34,7 @@ export function ScrollToTop() {
         isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'
       }`}
       size="icon"
-      aria-label="Volver al inicio de la página"
+      aria-label={t("scroll.ariaLabel") || "Volver al inicio de la página"}
     >
       <ChevronUp className="w-6 h-6 transition-transform duration-200" />
     </Button>

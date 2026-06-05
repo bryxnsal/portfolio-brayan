@@ -2,8 +2,11 @@ import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon, InstagramLogoIcon } from "
 import { Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { scrollToSection } from "@/lib/utils"
+import { useLanguage } from "@/hooks/use-language"
 
 export function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="bg-slate-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -13,7 +16,7 @@ export function Footer() {
               Brayan Salazar<span className="text-primary">.</span>
             </h3>
             <p className="text-slate-400 mb-4 font-text-regular">
-              Desarrollador Backend apasionado por crear experiencias digitales excepcionales.
+              {t("footer.desc")}
             </p>
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" asChild className="text-slate-400 hover:text-white cursor-pointer select-none">
@@ -40,17 +43,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 font-nav-medium">Enlaces Rápidos</h4>
+            <h4 className="font-semibold mb-4 font-nav-medium">{t("footer.links")}</h4>
             <ul className="space-y-2 text-slate-400">
-              <li><button onClick={() => scrollToSection("hero")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">Inicio</button></li>
-              <li><button onClick={() => scrollToSection("backend-skills")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">Habilidades</button></li>
-              <li><button onClick={() => scrollToSection("projects")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">Proyectos</button></li>
-              <li><button onClick={() => scrollToSection("contact")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">Contacto</button></li>
+              <li><button onClick={() => scrollToSection("hero")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">{t("nav.home")}</button></li>
+              <li><button onClick={() => scrollToSection("backend-skills")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">{t("nav.skills")}</button></li>
+              <li><button onClick={() => scrollToSection("projects")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">{t("nav.projects")}</button></li>
+              <li><button onClick={() => scrollToSection("contact")} className="hover:text-white transition-colors cursor-pointer font-nav-regular select-none">{t("nav.contact")}</button></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 font-nav-medium">Contacto</h4>
+            <h4 className="font-semibold mb-4 font-nav-medium">{t("nav.contact")}</h4>
             <ul className="space-y-2 text-slate-400 font-text-regular">
               <li><a href="mailto:salazar.br04@gmail.com" className="hover:text-white transition-colors">salazar.br04@gmail.com</a></li>
               <li><a href="tel:+51904196955" className="hover:text-white transition-colors">+51 904 196 955</a></li>
@@ -61,9 +64,9 @@ export function Footer() {
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
           <p className="flex items-center justify-center gap-2 font-text-regular">
-            Hecho con <Heart className="w-4 h-4 text-red-500" /> por Brayan Salazar
+            {t("footer.madeWith")} <Heart className="w-4 h-4 text-red-500" /> {t("footer.by")}
           </p>
-          <p className="mt-2 font-text-regular">© 2025 Todos los derechos reservados</p>
+          <p className="mt-2 font-text-regular">{t("footer.rights")}</p>
         </div>
       </div>
     </footer>

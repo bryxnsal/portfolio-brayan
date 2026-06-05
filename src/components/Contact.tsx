@@ -6,8 +6,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { GithubLogoIcon, LinkedinLogoIcon, InstagramLogoIcon, XLogoIcon } from "@phosphor-icons/react"
+import { useLanguage } from "@/hooks/use-language"
 
 export function Contact() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,7 +18,12 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    const text = t("contact.waText")
+      .replace("{name}", formData.name)
+      .replace("{message}", formData.message)
+    const encodedText = encodeURIComponent(text)
+    const whatsappUrl = `https://wa.me/51913979586?text=${encodedText}`
+    window.open(whatsappUrl, "_blank")
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,9 +37,9 @@ export function Contact() {
     <section id="contact" className="py-20 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display-bold">Contacto</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display-bold">{t("contact.title")}</h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? Hablemos sobre cómo podemos trabajar juntos
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -40,9 +47,9 @@ export function Contact() {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle className="font-nav-semibold">Información de Contacto</CardTitle>
+                <CardTitle className="font-nav-semibold">{t("contact.infoTitle")}</CardTitle>
                 <CardDescription className="font-text-regular">
-                  Ponte en contacto conmigo a través de cualquiera de estos medios
+                  {t("contact.infoDesc")}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -60,7 +67,7 @@ export function Contact() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="font-nav-regular">Teléfono</p>
+                    <p className="font-nav-regular">{t("Phone") || "Teléfono"}</p>
                     <p className="font-text-regular text-sm text-slate-600 dark:text-slate-400">
                       <a href="tel:+51904196955" className="hover:text-primary transition-colors">
                         +51 904 196 955
@@ -71,13 +78,13 @@ export function Contact() {
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="font-nav-regular">Ubicación</p>
+                    <p className="font-nav-regular">{t("Location") || "Ubicación"}</p>
                     <p className="font-text-regular text-sm text-slate-600 dark:text-slate-400">Lima, Perú</p>
                   </div>
                 </div>
 
                 <div className="pt-6">
-                  <p className="font-nav-medium mb-4">Sígueme en redes sociales</p>
+                  <p className="font-nav-medium mb-4">{t("contact.socials")}</p>
                   <div className="flex gap-4">
                     <Button variant="outline" size="icon" asChild className="cursor-pointer select-none">
                       <a href="https://github.com/bryxnsal" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de GitHub de Brayan Salazar">
@@ -108,26 +115,26 @@ export function Contact() {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle className="font-nav-semibold">Envíame un mensaje</CardTitle>
+                <CardTitle className="font-nav-semibold">{t("contact.formTitle")}</CardTitle>
                 <CardDescription className="font-text-regular">
-                  Completa el formulario y me pondré en contacto contigo lo antes posible
+                  {t("contact.formDesc")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <Label htmlFor="name" className="mb-2 font-nav-regular">Nombre</Label>
+                    <Label htmlFor="name" className="mb-2 font-nav-regular">{t("contact.nameLabel")}</Label>
                     <Input
                       id="name"
                       name="name"
                       type="text"
-                      placeholder="Tu nombre completo"
+                      placeholder={t("contact.namePlaceholder")}
                       value={formData.name}
                       onChange={handleChange}
                       required
                     />
                   </div>
-                  <div>
+                  {/* <div>
                     <Label htmlFor="email" className="mb-2 font-nav-regular">Email</Label>
                     <Input
                       id="email"
@@ -138,13 +145,13 @@ export function Contact() {
                       onChange={handleChange}
                       required
                     />
-                  </div>
+                  </div> */}
                   <div>
-                    <Label htmlFor="message" className="mb-2 font-nav-regular">Mensaje</Label>
+                    <Label htmlFor="message" className="mb-2 font-nav-regular">{t("contact.messageLabel")}</Label>
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Cuéntame sobre tu proyecto..."
+                      placeholder={t("contact.messagePlaceholder")}
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
@@ -152,7 +159,7 @@ export function Contact() {
                     />
                   </div>
                   <Button type="submit" className="w-full cursor-pointer font-nav-bold select-none">
-                    Enviar mensaje
+                    {t("contact.sendBtn")}
                   </Button>
                 </form>
               </CardContent>

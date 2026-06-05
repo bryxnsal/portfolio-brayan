@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import { ThemeToggle } from "@/components/ThemeToggle"
+import { LanguageToggle } from "@/components/LanguageToggle"
 import { Menu, X } from "lucide-react"
 import { scrollToSection as scrollToSectionUtil } from "@/lib/utils"
+import { useLanguage } from "@/hooks/use-language"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,29 +41,30 @@ export function Navbar() {
               onClick={() => scrollToSection("hero")}
               className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer font-nav-regular select-none"
             >
-              Inicio
+              {t("nav.home")}
             </button>
             <button
               onClick={() => scrollToSection("backend-skills")}
               className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer font-nav-regular select-none"
             >
-              Habilidades
+              {t("nav.skills")}
             </button>
             <button
               onClick={() => scrollToSection("projects")}
               className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer font-nav-regular select-none"
             >
-              Proyectos
+              {t("nav.projects")}
             </button>
             <button
               onClick={() => scrollToSection("contact")}
               className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer font-nav-regular select-none"
             >
-              Contacto
+              {t("nav.contact")}
             </button>
           </div>
 
           <div className="flex items-center gap-2">
+            <LanguageToggle />
             <ThemeToggle />
             <Button
               variant="ghost"
@@ -69,7 +73,7 @@ export function Navbar() {
                 isMobileMenuOpen ? 'rotate-90' : 'rotate-0'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-label={isMobileMenuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
@@ -77,7 +81,7 @@ export function Navbar() {
               onClick={() => scrollToSection("contact")}
               className="hidden md:inline-flex cursor-pointer font-nav-medium"
             >
-              Contactar
+              {t("nav.contactBtn")}
             </Button>
           </div>
         </div>
@@ -92,32 +96,32 @@ export function Navbar() {
               onClick={() => scrollToSection("hero")}
               className="text-left text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer py-2 font-nav-regular select-none"
             >
-              Inicio
+              {t("nav.home")}
             </button>
             <button
               onClick={() => scrollToSection("backend-skills")}
               className="text-left text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer py-2 font-nav-regular select-none"
             >
-              Habilidades
+              {t("nav.skills")}
             </button>
             <button
               onClick={() => scrollToSection("projects")}
               className="text-left text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer py-2 font-nav-regular select-none"
             >
-              Proyectos
+              {t("nav.projects")}
             </button>
             <button
               onClick={() => scrollToSection("contact")}
               className="text-left text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer py-2 font-nav-regular select-none"
             >
-              Contacto
+              {t("nav.contact")}
             </button>
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
               <Button
                 onClick={() => scrollToSection("contact")}
                 className="w-full cursor-pointer font-nav-medium"
               >
-                Contactar
+                {t("nav.contactBtn")}
               </Button>
             </div>
           </div>

@@ -1,10 +1,11 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Code, Database, Cloud, Bot } from "lucide-react"
+import { useLanguage } from "@/hooks/use-language"
 
 const skillCategories = [
 	{
-		title: "Backend",
+		titleKey: "skills.backend",
 		icon: Database,
 		skills: [
 			"Node.js",
@@ -12,37 +13,38 @@ const skillCategories = [
 			"PostgreSQL",
 			"MongoDB",
 			"Express",
-            "FastAPI",
+			"FastAPI",
 		],
 	},
 	{
-		title: "DevOps & Cloud",
+		titleKey: "skills.devops",
 		icon: Cloud,
 		skills: ["AWS", "Docker", "CI/CD", "Vercel", "Linux"],
 	},
 	{
-		title: "Herramientas",
+		titleKey: "skills.tools",
 		icon: Code,
 		skills: ["Git", "VS Code", "Obsidian", "Postman", "Jest"],
 	},
 	{
-		title: "IA & Automatización",
+		titleKey: "skills.ai",
 		icon: Bot,
 		skills: ["MCPs", "Claude", "ChatGPT", "GitHub Copilot", "Cursor", "GitHub Actions"],
 	},
 ]
 
 export function Skills() {
+	const { t } = useLanguage()
+
 	return (
 		<section id="backend-skills" className="py-20 bg-white dark:bg-slate-900">
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 font-display-bold">
-						Tecnologías Backend
+						{t("skills.title")}
 					</h2>
 					<p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-text-regular">
-						Tecnologías y herramientas backend que domino para construir APIs
-						robustas y escalables
+						{t("skills.subtitle")}
 					</p>
 				</div>
 
@@ -51,13 +53,13 @@ export function Skills() {
 						const IconComponent = category.icon
 						return (
 							<Card
-								key={category.title}
+								key={category.titleKey}
 								className="hover:shadow-lg transition-shadow"
 							>
 								<CardHeader>
 									<CardTitle className="flex items-center gap-3 font-nav-semibold">
 										<IconComponent className="w-6 h-6 text-primary" />
-										{category.title}
+										{t(category.titleKey)}
 									</CardTitle>
 								</CardHeader>
 								<CardContent>
