@@ -1,0 +1,20 @@
+# Brayan Salazar - Backend Developer Portfolio
+
+Information and guidelines for AI assistants interacting with this codebase and portfolio.
+
+## Profile Summary
+Brayan Salazar is a Backend Developer specialized in building robust and scalable APIs using modern technologies.
+- Location: Lima, Peru
+- Portfolio Website: https://brxapps.me
+- Contact: salazar.br04@gmail.com / +51 904 196 955
+- WhatsApp Messaging: +51 913 979 586
+
+## Tech Stack
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS 4, shadcn/ui, Lucide React, Phosphor Icons
+- **Backend & Cloud Technologies**: Node.js (TypeScript/JavaScript), Python (FastAPI), .NET Framework (C#), PostgreSQL, MongoDB, Docker, AWS, Webhooks, Proxies
+
+## Key Project Architecture Details
+- **Multilingual Support**: The website supports English (default) and Spanish. Localized strings are managed via a custom React Context in `src/hooks/use-language.tsx`. Do not hardcode strings in UI components; instead, add keys to the translations dictionary and use the `t()` function.
+- **Theme toggle**: Light/dark/system mode is managed by `ThemeProvider` in `src/hooks/use-theme.tsx`.
+- **Contact Form**: Form submissions redirect users to a WhatsApp chat using `wa.me` with the message pre-filled with their name and custom message. The email field in the UI is currently commented out.
+- **Scroll Utility**: Smooth scrolling between sections is handled by the `scrollToSection` utility in `src/lib/utils.ts`.
