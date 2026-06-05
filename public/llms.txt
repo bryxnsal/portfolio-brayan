@@ -11,7 +11,9 @@ Brayan Salazar is a Backend Developer specialized in building robust and scalabl
 
 ## Tech Stack
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS 4, shadcn/ui, Lucide React, Phosphor Icons
-- **Backend & Cloud Technologies**: Node.js (TypeScript/JavaScript), Python (FastAPI), .NET Framework (C#), PostgreSQL, MongoDB, Docker, AWS, Webhooks, Proxies
+- **Backend & Cloud Technologies**: Node.js (TypeScript/JavaScript), Python (FastAPI, Flask), .NET (C#), SQL Server, PostgreSQL, MongoDB, Docker, AWS, Gitlab, GitHub Actions, Dokploy, Vercel
+- **Tools & Methodologies**: Git, Antigravity, VS Code, Obsidian, Bruno, Vitest
+- **AI & Automation**: MCPs, Spec Driven Development (SDD), Harness Engineering, OpenCode, Gemini, Claude, GitHub Copilot
 
 ## Key Project Architecture Details
 - **Multilingual Support**: The website supports English (default) and Spanish. Localized strings are managed via a custom React Context in `src/hooks/use-language.tsx`. Do not hardcode strings in UI components; instead, add keys to the translations dictionary and use the `t()` function.

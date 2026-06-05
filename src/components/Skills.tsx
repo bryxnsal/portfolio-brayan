@@ -10,26 +10,29 @@ const skillCategories = [
 		skills: [
 			"Node.js",
 			"Python",
+			"SQL Server",
 			"PostgreSQL",
 			"MongoDB",
 			"Express",
 			"FastAPI",
+			"Flask",
+			".NET",
 		],
 	},
 	{
 		titleKey: "skills.devops",
 		icon: Cloud,
-		skills: ["AWS", "Docker", "CI/CD", "Vercel", "Linux"],
+		skills: ["AWS", "Linux", "Gitlab", "GitHub Actions", "Docker", "Dokploy", "Vercel"],
 	},
 	{
 		titleKey: "skills.tools",
 		icon: Code,
-		skills: ["Git", "VS Code", "Obsidian", "Postman", "Jest"],
+		skills: ["Git", "Antigravity", "VS Code", "Obsidian", "Bruno", "Vitest"],
 	},
 	{
 		titleKey: "skills.ai",
 		icon: Bot,
-		skills: ["MCPs", "Claude", "ChatGPT", "GitHub Copilot", "Cursor", "GitHub Actions"],
+		skills: ["MCPs", "Spec Driven Development (SDD)", "Harness Engineering", "OpenCode", "Gemini", "Claude", "GitHub Copilot"],
 	},
 ]
 
