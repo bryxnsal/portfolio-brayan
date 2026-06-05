@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "analyze": "npx vite-bundle-analyzer dist"
+    "analyze": "pnpm exec vite-bundle-analyzer dist"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

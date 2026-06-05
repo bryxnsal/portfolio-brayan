@@ -10,7 +10,7 @@ const projects = [
 		titleKey: "projects.telegram.title",
 		descriptionKey: "projects.telegram.desc",
 		image: "/api/placeholder/400/250",
-		technologies: ["Python", "Telegram API", "Proxies", "Webhooks", "APIs Externas"],
+		technologies: ["Python", "Telegram API", "Proxies", "Webhooks", "External APIs"],
 		liveUrl: "#",
 		githubUrl: "#",
 		featured: true,
@@ -41,7 +41,8 @@ export function Projects() {
 	const otherProjects = projects.filter((project) => !project.featured)
 
 	return (
-		<section id="projects" className="py-20 bg-slate-50 dark:bg-slate-800">
+		<section id="projects" className="relative py-20 bg-slate-50 dark:bg-slate-800">
+			<div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-slate-900 dark:via-slate-900/80 pointer-events-none" />
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -58,9 +59,9 @@ export function Projects() {
 							key={index}
 							className="overflow-hidden hover:shadow-xl transition-shadow"
 						>
-							<div className="aspect-video bg-slate-200/15 dark:bg-slate-700/15 flex items-center justify-center">
+							{/* <div className="aspect-video bg-slate-200/15 dark:bg-slate-700/15 flex items-center justify-center">
 								<span className="text-slate-500 select-none">Project Image</span>
-							</div>
+							</div> */}
 							<CardHeader>
 								<CardTitle className="text-xl font-nav-semibold">{t(project.titleKey)}</CardTitle>
 								<CardDescription className="text-base font-text-regular">
@@ -106,9 +107,9 @@ export function Projects() {
 				<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 max-w-md mx-auto">
 					{otherProjects.map((project, index) => (
 						<Card key={index} className="hover:shadow-lg transition-shadow">
-							<div className="aspect-video bg-slate-200/15 dark:bg-slate-700/15 flex items-center justify-center">
+							{/* <div className="aspect-video bg-slate-200/15 dark:bg-slate-700/15 flex items-center justify-center">
 								<span className="text-slate-500 select-none">Project Image</span>
-							</div>
+							</div> */}
 							<CardHeader>
 								<CardTitle className="text-lg font-nav-semibold">{t(project.titleKey)}</CardTitle>
 								<CardDescription className="text-sm font-text-regular">

@@ -40,7 +40,8 @@ export function Skills() {
 	const { t } = useLanguage()
 
 	return (
-		<section id="backend-skills" className="py-20 bg-white dark:bg-slate-900">
+		<section id="backend-skills" className="relative py-20 bg-white dark:bg-slate-900">
+			<div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent dark:from-slate-800 dark:via-slate-800/80 pointer-events-none" />
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 font-display-bold">

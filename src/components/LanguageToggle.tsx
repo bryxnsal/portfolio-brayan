@@ -20,13 +20,13 @@ export function LanguageToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLanguage("es")} className="select-none flex justify-between items-center gap-4 cursor-pointer">
-          <span>Español</span>
-          {language === "es" && <span className="text-xs text-primary font-bold">✓</span>}
-        </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setLanguage("en")} className="select-none flex justify-between items-center gap-4 cursor-pointer">
           <span>English</span>
           {language === "en" && <span className="text-xs text-primary font-bold">✓</span>}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setLanguage("es")} className="select-none flex justify-between items-center gap-4 cursor-pointer">
+          <span>Español</span>
+          {language === "es" && <span className="text-xs text-primary font-bold">✓</span>}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
