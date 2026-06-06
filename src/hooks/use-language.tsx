@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 
 export type Language = "es" | "en"
 
@@ -147,9 +147,70 @@ export function LanguageProvider({
   storageKey = "portfolio-language",
   ...props
 }: LanguageProviderProps) {
-  const [language, setLanguage] = useState<Language>(
-    () => (localStorage.getItem(storageKey) as Language) || defaultLanguage
-  )
+  const [language, setLanguage] = useState<Language>(() => {
+    const path = window.location.pathname
+    if (path.startsWith("/es")) return "es"
+    if (path.startsWith("/en")) return "en"
+
+    const stored = localStorage.getItem(storageKey) as Language
+    if (stored === "es" || stored === "en") return stored
+
+    if (navigator.language.startsWith("es")) return "es"
+
+    return defaultLanguage
+  })
+
+  useEffect(() => {
+    const path = window.location.pathname
+    const expectedPath = `/${language}`
+
+    if (!path.startsWith(expectedPath)) {
+      const newPath = expectedPath + window.location.search + window.location.hash
+      window.history.replaceState({ lang: language }, "", newPath)
+    }
+
+    document.documentElement.setAttribute("lang", language)
+  }, [language])
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname
+      if (path.startsWith("/es") && language !== "es") {
+        setLanguage("es")
+      } else if (path.startsWith("/en") && language !== "en") {
+        setLanguage("en")
+      }
+    }
+
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [language])
+
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "lang") {
+          const currentLangAttr = document.documentElement.getAttribute("lang")
+
+          if (
+            window.location.pathname.startsWith("/en") &&
+            currentLangAttr === "es"
+          ) {
+            observer.disconnect()
+            const newPath = "/es" + window.location.search + window.location.hash
+            window.location.href = newPath
+          }
+        }
+      })
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   const t = (key: string): string => {
     const langDict = translations[language]
@@ -161,6 +222,12 @@ export function LanguageProvider({
     setLanguage: (lang: Language) => {
       localStorage.setItem(storageKey, lang)
       setLanguage(lang)
+
+      const expectedPath = `/${lang}`
+      if (!window.location.pathname.startsWith(expectedPath)) {
+        const newPath = expectedPath + window.location.search + window.location.hash
+        window.history.pushState({ lang }, "", newPath)
+      }
     },
     t,
   }
